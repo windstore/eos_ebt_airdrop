@@ -25,10 +25,10 @@ if __name__ == '__main__':
     p = Pool()
 
     #account one
-    p.apply_async(runInterval, args=(5 * 60, "xxxx", "xxxxx", "xxxx",))
+    p.apply_async(runInterval, args=(5 * 60, "eosaccount", "walletFileName", "walletPassword",))
 
     # account two
-    p.apply_async(runInterval, args=(5 * 60, "xxxxx", "xxxx", "xxxx",))
+    p.apply_async(runInterval, args=(5 * 60, "eosaccount", "walletFileName", "walletPassword",))
     
     p.close()
     p.join()
