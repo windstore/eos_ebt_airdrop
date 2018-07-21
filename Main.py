@@ -3,11 +3,13 @@ from multiprocessing import Pool
 
 def getAirDrop(account, walletName, walletPass):
     logPrint("account: "+account+" start get airdrop...")
+    
     os.system("cleos  -u https://publicapi-mainnet.eosauthority.com/ --wallet-url=http://localhost:8888 wallet unlock -n "
         + walletName + " --password " + walletPass)
 
     os.system("cleos  -u https://publicapi-mainnet.eosauthority.com/ --wallet-url=http://localhost:8888 \
                push action theeosbutton claimad '{\"account\":\"" + account + "\"}' -p " + account)
+    
     logPrint("account: " + account + " airdrop done...")
 
 def runInterval(interval,account, walletName, walletPass):
@@ -27,6 +29,7 @@ if __name__ == '__main__':
 
     # account two
     p.apply_async(runInterval, args=(5 * 60, "xxxxx", "xxxx", "xxxx",))
+    
     p.close()
     p.join()
     logPrint("job done...")
